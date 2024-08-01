@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+  <title>Home page</title>
+{% endblock %}
+{% block content %}
+
+  <h1>TODO List<a class="btn btn-primary" style="float: right" href="{% url 'task:task-create' %}" role="button">Add task</a></h1>
+  <br>
+  <br>
+  {% if task_list %}
+    {% for task in task_list %}
+
+      <h3>
+        {{ task.content }}
+        {% if  task.boolean_field  == False %}
+          <span style="color: red">Not done</span>
+          <a class="btn btn-success" style="float: right" href="{% url 'task:task-toggle-assign' pk=task.id %}" role="button">Complete</a>
+        {% else %}
+          <span style="color: green">Done</span>
+          <a class="btn btn-secondary" style="float: right" href="{% url 'task:task-toggle-assign' pk=task.id %}" role="button">Undo</a>
+        {% endif %}
+          </h3>
+        
+      <p>
+        Created: {{ task.created_task }}
+        {% if task.deadline %}
+          <strong style="color: saddlebrown">Deadline: {{ task.deadline }}</strong>
+        {% else %}
+        {% endif %}
+      </p>
+      <h5 class="text-muted">Task: {{ task.tags.get }} 
+        <a href="{% url 'task:task-update' task.id %}">Update</a> 
+        <a href="{% url 'task:task-delete' task.id %}">Delete</a></h5>
+      <hr>
+
+    {% endfor %}
+
+  {% else %}
+    <p>There are no tasks</p>
+  {% endif %}
+{% endblock %}
