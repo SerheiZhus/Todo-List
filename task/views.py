@@ -44,6 +44,13 @@ class TagListView(generic.ListView):
     paginate_by = 3
 
 
+class TagCreateView(generic.CreateView):
+    model = Tag
+    fields = "__all__"
+    template_name = "task/tag_form.html"
+    success_url = reverse_lazy("task:task-list")
+
+
 class TagUpdateView(generic.UpdateView):
     model = Tag
     fields = "__all__"

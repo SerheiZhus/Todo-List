@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Tags<a class="btn btn-primary" style="float: right" href="#" role="button">Add</a></h1>
+  <h1>Tags<a class="btn btn-primary" style="float: right" href="{% url 'task:tag-create' %}" role="button">Add</a></h1>
 
   {% if tag_list %}
     <table class="table">
