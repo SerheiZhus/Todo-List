@@ -16,7 +16,7 @@
         <th>Delete</th>
 
       </tr>
-    
+
       {% for tag in tag_list %}
         <tr>
           <td>
@@ -26,7 +26,7 @@
             <a class="btn btn-secondary" href="{% url 'task:tag-update' tag.id %}" role="button">Update</a>
           </td>
           <td>
-            <a class="btn btn-secondary"  href="{% url 'task:tag-delete' tag.id %}" role="button">Delete</a>
+            <a class="btn btn-secondary" href="{% url 'task:tag-delete' tag.id %}" role="button">Delete</a>
           </td>
         </tr>
       {% endfor %}

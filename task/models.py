@@ -11,7 +11,7 @@ class Task(models.Model):
     class Meta:
         ordering = ("created_task",)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.content
 
 
@@ -21,5 +21,5 @@ class Tag(models.Model):
     class Meta:
         ordering = ("name",)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name

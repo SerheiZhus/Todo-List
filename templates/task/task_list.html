@@ -17,7 +17,8 @@
           <a class="btn btn-success" style="float: right" href="{% url 'task:task-toggle-assign' pk=task.id %}" role="button">Complete</a>
         {% else %}
           <span style="color: green">Done</span>
-          <a class="btn btn-secondary" style="float: right" href="{% url 'task:task-toggle-assign' pk=task.id %}" role="button">Undo</a>
+          <a class="btn btn-secondary" style="float: right" href="{% url 'task:task-toggle-assign' pk=task.id %}"
+             role="button">Undo</a>
         {% endif %}
           </h3>
         

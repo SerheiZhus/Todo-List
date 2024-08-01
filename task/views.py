@@ -32,7 +32,7 @@ class TaskDeleteView(generic.DeleteView):
     template_name = "task/task_confirm_delete.html"
 
 
-def toggle_assign_to_task(request, pk) -> HttpResponseRedirect:
+def toggle_assign_to_task(request, pk: int) -> HttpResponseRedirect:
     task = Task.objects.get(id=pk)
     task.boolean_field = not task.boolean_field
     task.save()
