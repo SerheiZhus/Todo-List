@@ -8,6 +8,12 @@ class Task(models.Model):
     boolean_field = models.BooleanField(default=False)
     tags = models.ManyToManyField("Tag", related_name="tasks")
 
+    class Meta:
+        ordering = ("created_task",)
+
+    def __str__(self):
+        return self.content
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=250, unique=True)
