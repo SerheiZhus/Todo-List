@@ -1,7 +1,6 @@
 from django.http import HttpResponseRedirect, HttpRequest
 from django.urls import reverse_lazy
 from django.views import generic
-
 from task.forms import TaskForm
 from task.models import Tag, Task
 
