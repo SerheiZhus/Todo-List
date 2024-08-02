@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpRequest
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -32,11 +32,15 @@ class TaskDeleteView(generic.DeleteView):
     template_name = "task/task_confirm_delete.html"
 
 
-def toggle_assign_to_task(request, pk: int) -> HttpResponseRedirect:
-    task = Task.objects.get(id=pk)
-    task.boolean_field = not task.boolean_field
-    task.save()
-    return HttpResponseRedirect(reverse_lazy("task:task-list"))
+class ToggleAssignToTaskView(generic.View):
+    model = Task
+    template_name = "task:task-list"
+
+    def get(self, request: HttpRequest, pk: int) -> HttpResponseRedirect:
+        task = self.model.objects.get(id=pk)
+        task.boolean_field = not task.boolean_field
+        task.save()
+        return HttpResponseRedirect(reverse_lazy(self.template_name))
 
 
 class TagListView(generic.ListView):
